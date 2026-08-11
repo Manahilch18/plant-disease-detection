@@ -3,7 +3,12 @@ import base64
 import requests
 import streamlit as st
 from PIL import Image
+import sys
+from pathlib import Path
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 from src.disease_info import get_disease_info
 
 # Validity / OOD gate — standalone module, does not touch the Baseline

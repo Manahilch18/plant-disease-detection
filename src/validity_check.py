@@ -28,7 +28,7 @@ Requirements:
 (First call downloads the "openai/clip-vit-base-patch32" weights from
 Hugging Face and caches them locally; subsequent runs are offline.)
 """
-
+import os
 from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import List
@@ -91,9 +91,9 @@ def _load_clip():
     """
     import torch
     from transformers import CLIPModel, CLIPProcessor
-
-    model = CLIPModel.from_pretrained(_MODEL_NAME)
-    processor = CLIPProcessor.from_pretrained(_MODEL_NAME)
+    hf_token = os.getenv("HF_TOKEN")
+    model = CLIPModel.from_pretrained(_MODEL_NAME,token=hf_token,)
+    processor = CLIPProcessor.from_pretrained(_MODEL_NAME,token=hf_token,)
     model.eval()
     return model, processor, torch
 

@@ -25,7 +25,8 @@ services:
 
     environment:
       API_BASE_URL: http://api:8000
-
+      HF_TOKEN: ${HF_TOKEN}
+      
     ports:
       - "8501:8501"
 

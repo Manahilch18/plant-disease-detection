@@ -46,3 +46,4 @@ uvicorn
 # Invalid-image / plant-leaf validity gate
 torch
 transformers>=4.40.0
+torchvision

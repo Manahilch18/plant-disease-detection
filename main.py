@@ -6,3 +6,4 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"message": "Plant Disease Detection API is running"}
+from api.main import app

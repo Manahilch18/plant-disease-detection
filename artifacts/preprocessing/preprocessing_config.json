@@ -1,0 +1,12 @@
+{
+    "model_type": "cnn",
+    "image_size": [
+        224,
+        224
+    ],
+    "batch_size": 32,
+    "shuffle": true,
+    "cache": true,
+    "prefetch": true,
+    "seed": 42
+}

@@ -1,0 +1,26 @@
+model_name: baseline_cnn
+
+image_size: [224, 224]
+batch_size: 32
+num_classes: 38
+
+epochs: 30
+learning_rate: 0.001
+
+dropout_rate: 0.30
+l2_weight_decay: 0.0001
+
+optimizer: adam
+loss: sparse_categorical_crossentropy
+
+metrics:
+  - accuracy
+  - top_k_categorical_accuracy
+
+seed: 42
+
+train_dir: data/processed/train
+val_dir: data/processed/val
+test_dir: data/processed/test
+
+save_model_path: artifacts/baseline_cnn/best_model.keras

@@ -1,0 +1,10 @@
+{
+    "model_name": "efficientnetb0_transfer",
+    "best_epoch": 20,
+    "best_validation_accuracy": 0.9785170555114746,
+    "best_validation_loss": 0.06386157125234604,
+    "final_training_accuracy": 0.9755346775054932,
+    "final_validation_accuracy": 0.9779032468795776,
+    "final_training_loss": 0.07027111947536469,
+    "final_validation_loss": 0.06415682286024094
+}

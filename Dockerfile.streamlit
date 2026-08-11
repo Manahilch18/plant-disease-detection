@@ -1,0 +1,67 @@
+# ============================================================
+# Plant Disease Detection — Streamlit Docker Container
+# ============================================================
+
+FROM python:3.12-slim
+
+# ------------------------------------------------------------
+# System dependencies
+# ------------------------------------------------------------
+
+RUN apt-get update && apt-get install -y \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ------------------------------------------------------------
+# Working directory
+# ------------------------------------------------------------
+
+WORKDIR /app
+ENV PYTHONPATH=/app
+
+# ------------------------------------------------------------
+# Python dependencies
+# ------------------------------------------------------------
+
+COPY requirements_streamlit.txt .
+
+RUN pip install --upgrade pip --default-timeout=300 && \
+    pip install --default-timeout=300 --retries 10 -r requirements_streamlit.txt
+# ------------------------------------------------------------
+# Application code
+# ------------------------------------------------------------
+
+COPY streamlit_app ./streamlit_app
+COPY src ./src
+
+# ------------------------------------------------------------
+# Required model
+# ------------------------------------------------------------
+
+COPY artifacts/baseline_cnn/models/best_model.keras \
+     ./artifacts/baseline_cnn/models/best_model.keras
+
+# ------------------------------------------------------------
+# Required preprocessing metadata
+# ------------------------------------------------------------
+
+COPY artifacts/preprocessing/class_mapping.json \
+     ./artifacts/preprocessing/class_mapping.json
+
+# ------------------------------------------------------------
+# Streamlit configuration
+# ------------------------------------------------------------
+
+EXPOSE 8501
+
+# ------------------------------------------------------------
+# Start Streamlit
+# ------------------------------------------------------------
+
+CMD ["streamlit", "run", "streamlit_app/app.py", \
+     "--server.address=0.0.0.0", \
+     "--server.port=8501"]

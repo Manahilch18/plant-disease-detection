@@ -1,0 +1,2 @@
+best_epoch,best_validation_accuracy,best_validation_loss,training_time_minutes
+29,0.9873557686805724,0.1626112908124923,95.51

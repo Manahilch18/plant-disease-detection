@@ -1,0 +1,74 @@
+[
+    {
+        "id": "20260808180616634470",
+        "timestamp": "2026-08-08T18:06:16",
+        "filename": "0b046683-3a87-4866-b772-0ff89890a0ac___Rut._Bact.S 0967.JPG",
+        "disease": "Peach___Bacterial_spot",
+        "confidence": 0.9938364624977112,
+        "confidence_percent": 99.38,
+        "confidence_status": "High Confidence"
+    },
+    {
+        "id": "20260808181007017623",
+        "timestamp": "2026-08-08T18:10:07",
+        "filename": "test leave2.jpg",
+        "disease": "Grape___Esca_(Black_Measles)",
+        "confidence": 0.999988317489624,
+        "confidence_percent": 100.0,
+        "confidence_status": "High Confidence"
+    },
+    {
+        "id": "20260808181037474326",
+        "timestamp": "2026-08-08T18:10:37",
+        "filename": "leave3.jpg",
+        "disease": "Potato___Early_blight",
+        "confidence": 0.3068625032901764,
+        "confidence_percent": 30.69,
+        "confidence_status": "Low Confidence"
+    },
+    {
+        "id": "20260808181124449761",
+        "timestamp": "2026-08-08T18:11:24",
+        "filename": "test leave.jpg",
+        "disease": "Corn_(maize)___Common_rust_",
+        "confidence": 0.720626711845398,
+        "confidence_percent": 72.06,
+        "confidence_status": "Moderate Confidence"
+    },
+    {
+        "id": "20260808181229295383",
+        "timestamp": "2026-08-08T18:12:29",
+        "filename": "f436f07c-ff87-4871-b712-5f282912f70c___Mt.N.V_HL 6180.JPG",
+        "disease": "Grape___healthy",
+        "confidence": 0.999440610408783,
+        "confidence_percent": 99.94,
+        "confidence_status": "High Confidence"
+    },
+    {
+        "id": "20260808181546786774",
+        "timestamp": "2026-08-08T18:15:46",
+        "filename": "leave4.jpg",
+        "disease": "Pepper,_bell___Bacterial_spot",
+        "confidence": 0.9993010759353638,
+        "confidence_percent": 99.93,
+        "confidence_status": "High Confidence"
+    },
+    {
+        "id": "20260810082008908505",
+        "timestamp": "2026-08-10T08:20:08",
+        "filename": "test leave.jpg",
+        "disease": "Corn_(maize)___Common_rust_",
+        "confidence": 0.7206268310546875,
+        "confidence_percent": 72.06,
+        "confidence_status": "Moderate Confidence"
+    },
+    {
+        "id": "20260810083251077043",
+        "timestamp": "2026-08-10T08:32:51",
+        "filename": "test leave2.jpg",
+        "disease": "Grape___Esca_(Black_Measles)",
+        "confidence": 0.999988317489624,
+        "confidence_percent": 100.0,
+        "confidence_status": "High Confidence"
+    }
+]

@@ -1,0 +1,43 @@
+# Git
+.git
+.github
+
+# Python cache
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints
+notebooks
+
+# Tests
+tests
+
+# Documentation
+docs
+
+
+# Unused models
+artifacts/efficientnetb0
+artifacts/ResNet50
+
+# Model comparison artifacts
+artifacts/model_comparison
+
+# Grad-CAM generated outputs
+artifacts/explainability
+
+# Logs
+**/*.log
+
+# Virtual environments
+.venv
+venv
+env
+
+# OS files
+.DS_Store
+Thumbs.db
+#data/

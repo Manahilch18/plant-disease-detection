@@ -1,0 +1,178 @@
+# ==========================================================
+# EfficientNetB0 Transfer Learning Configuration
+# Project: Plant Disease Detection System
+# ==========================================================
+
+# ----------------------------------------------------------
+# General
+# ----------------------------------------------------------
+
+model_name: efficientnetb0_transfer
+
+seed: 42
+
+# ----------------------------------------------------------
+# Dataset
+# ----------------------------------------------------------
+
+image_size: [224, 224]
+
+batch_size: 32
+
+num_classes: 38
+
+class_mode: int
+
+train_dir: data/processed/train
+
+val_dir: data/processed/val
+
+test_dir: data/processed/test
+
+# ----------------------------------------------------------
+# Data Augmentation
+# ----------------------------------------------------------
+
+augmentation:
+
+  random_flip: horizontal
+
+  random_rotation: 0.10
+
+  random_zoom: 0.10
+
+  random_translation_height: 0.10
+
+  random_translation_width: 0.10
+
+  random_contrast: 0.10
+
+# ----------------------------------------------------------
+# Model
+# ----------------------------------------------------------
+
+backbone: EfficientNetB0
+
+weights: imagenet
+
+include_top: false
+
+pooling: avg
+
+dense_units: 256
+
+dropout_rate: 0.30
+
+batch_normalization: true
+
+classifier_activation: softmax
+
+# ----------------------------------------------------------
+# Phase 1 - Feature Extraction
+# ----------------------------------------------------------
+
+freeze_backbone: true
+
+epochs_head: 15
+
+initial_learning_rate: 0.001
+
+# ----------------------------------------------------------
+# Phase 2 - Fine-Tuning
+# ----------------------------------------------------------
+
+fine_tune: true
+
+fine_tune_at: -30
+
+fine_tune_learning_rate: 0.00001
+
+epochs_fine_tune: 15
+
+freeze_batch_norm: true
+
+# ----------------------------------------------------------
+# Training
+# ----------------------------------------------------------
+
+optimizer: Adam
+
+loss: SparseCategoricalCrossentropy
+
+metrics:
+
+  - accuracy
+
+  - top5_accuracy
+
+# ----------------------------------------------------------
+# Callbacks
+# ----------------------------------------------------------
+
+callbacks:
+
+  early_stopping:
+
+    monitor: val_loss
+
+    patience: 5
+
+    restore_best_weights: true
+
+  reduce_lr:
+
+    monitor: val_loss
+
+    factor: 0.2
+
+    patience: 2
+
+    min_lr: 0.0000001
+
+  model_checkpoint:
+
+    monitor: val_accuracy
+
+    save_best_only: true
+
+  csv_logger: true
+
+  tensorboard: true
+
+# ----------------------------------------------------------
+# Artifact Paths
+# ----------------------------------------------------------
+
+artifact_dir: artifacts/efficientnetb0_transfer
+
+log_dir: artifacts/efficientnetb0_transfer/logs
+
+save_model_path: artifacts/efficientnetb0_transfer/best_efficientnet.keras
+
+training_history_csv: artifacts/efficientnetb0_transfer/training_history.csv
+
+training_history_pkl: artifacts/efficientnetb0_transfer/training_history.pkl
+
+training_metrics_json: artifacts/efficientnetb0_transfer/training_metrics.json
+
+training_curves_png: artifacts/efficientnetb0_transfer/training_curves.png
+
+model_summary_txt: artifacts/efficientnetb0_transfer/model_summary.txt
+
+# ----------------------------------------------------------
+# Evaluation Artifacts
+# ----------------------------------------------------------
+
+evaluation_dir: artifacts/evaluation
+
+classification_report_csv: artifacts/evaluation/classification_report.csv
+
+per_class_metrics_csv: artifacts/evaluation/per_class_metrics.csv
+
+evaluation_metrics_csv: artifacts/evaluation/evaluation_metrics.csv
+
+confusion_matrix_png: artifacts/evaluation/confusion_matrix.png
+
+normalized_confusion_matrix_png: artifacts/evaluation/normalized_confusion_matrix.png
+
+evaluation_summary_md: artifacts/evaluation/evaluation_summary.md

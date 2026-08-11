@@ -1,0 +1,242 @@
+# ==========================================================
+# ResNet50 Transfer Learning Configuration
+# Plant Disease Detection System
+# ==========================================================
+
+project:
+  name: "Plant Disease Detection System"
+  model_name: "resnet50_transfer_learning"
+  seed: 42
+
+# ==========================================================
+# Dataset Configuration
+# ==========================================================
+
+dataset:
+  name: "PlantVillage"
+  num_classes: 38
+
+  image_size:
+    height: 224
+    width: 224
+    channels: 3
+
+  batch_size: 16
+
+  split:
+    train: 0.70
+    validation: 0.15
+    test: 0.15
+
+  label_mode: "int"
+
+# ==========================================================
+# Model Configuration
+# ==========================================================
+
+model:
+  architecture: "ResNet50"
+
+  weights: "imagenet"
+
+  include_top: false
+
+  pooling: null
+
+  trainable: false
+
+  dropout_rate: 0.30
+
+  dense_units: 512
+
+  l2_weight_decay: 0.0001
+
+# ==========================================================
+# Data Augmentation
+# ==========================================================
+
+augmentation:
+  enabled: true
+
+  random_flip:
+    enabled: true
+    mode: "horizontal"
+
+  random_rotation:
+    enabled: true
+    factor: 0.10
+
+  random_zoom:
+    enabled: true
+    height_factor: 0.10
+    width_factor: 0.10
+
+# ==========================================================
+# Phase 1 — Feature Extraction
+# ==========================================================
+
+training:
+  phase_1:
+    name: "feature_extraction"
+
+    epochs: 30
+
+    learning_rate: 0.001
+
+    backbone_trainable: false
+
+# ==========================================================
+# Phase 2 — Fine-Tuning
+# ==========================================================
+
+  phase_2:
+    name: "fine_tuning"
+
+    epochs: 15
+
+    learning_rate: 0.00001
+
+    fine_tune_layers: 30
+
+    batch_normalization_trainable: false
+
+# ==========================================================
+# Optimizer
+# ==========================================================
+
+optimizer:
+  name: "Adam"
+
+# ==========================================================
+# Loss Function
+# ==========================================================
+
+loss:
+  name: "SparseCategoricalCrossentropy"
+
+# ==========================================================
+# Metrics
+# ==========================================================
+
+metrics:
+  - "accuracy"
+  - "top_5_accuracy"
+
+# ==========================================================
+# Callbacks
+# ==========================================================
+
+callbacks:
+  early_stopping:
+    enabled: true
+    monitor: "val_accuracy"
+    mode: "max"
+    patience: 5
+    restore_best_weights: true
+
+  reduce_lr:
+    enabled: true
+    monitor: "val_loss"
+    mode: "min"
+    factor: 0.2
+    patience: 2
+    min_lr: 0.0000001
+
+  model_checkpoint:
+    enabled: true
+    monitor: "val_accuracy"
+    mode: "max"
+    save_best_only: true
+    filepath: "artifacts/training/best_resnet.keras"
+
+  csv_logger:
+    enabled: true
+    filepath: "artifacts/training/history_fine_tuning.csv"
+    append: true
+
+  tensorboard:
+    enabled: true
+    log_dir: "logs/resnet50"
+
+# ==========================================================
+# Paths
+# ==========================================================
+
+paths:
+  dataset_root: "/kaggle/input/datasets/eyaminal/plantvillage-dataset/plantvillage_resplit"
+
+  train_dir: "train"
+  validation_dir: "val"
+  test_dir: "test"
+
+  artifacts_dir: "artifacts"
+
+  training_artifacts: "artifacts/training"
+
+  evaluation_artifacts: "artifacts/evaluation/resnet50"
+
+  logs_dir: "logs/resnet50"
+
+  best_model: "artifacts/training/best_resnet.keras"
+
+# ==========================================================
+# Evaluation
+# ==========================================================
+
+evaluation:
+  top_k: 5
+
+  averages:
+    - "macro"
+    - "weighted"
+
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "macro_f1"
+    - "weighted_f1"
+
+  save_predictions: true
+
+  save_confusion_matrix: true
+
+  save_normalized_confusion_matrix: true
+
+  save_classification_report: true
+
+  save_per_class_metrics: true
+
+  save_confidence_analysis: true
+
+  save_misclassified_samples: true
+
+# ==========================================================
+# Reproducibility
+# ==========================================================
+
+reproducibility:
+  seed: 42
+  deterministic_ops: true
+
+# ==========================================================
+# Expected Model
+# ==========================================================
+
+expected:
+  input_shape:
+    - null
+    - 224
+    - 224
+    - 3
+
+  output_shape:
+    - null
+    - 38
+
+  total_parameters: 24664486
+
+  
+  
+  
+  

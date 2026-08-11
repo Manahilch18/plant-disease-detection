@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+data/raw/
+data/processed/
+data/augmented/
+# Large/generated ML artifacts
+artifacts/*
+
+# Keep required Baseline CNN model
+!artifacts/baseline_cnn/
+!artifacts/baseline_cnn/models/
+!artifacts/baseline_cnn/models/best_model.keras
+
+# Keep required preprocessing metadata
+!artifacts/preprocessing/
+!artifacts/preprocessing/class_mapping.json
+!artifacts/preprocessing/class_weights.json
+!artifacts/preprocessing/dataset_statistics.json
+!artifacts/preprocessing/preprocessing_config.json

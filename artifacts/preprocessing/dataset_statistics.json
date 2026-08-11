@@ -1,0 +1,12 @@
+{
+    "num_classes": 38,
+    "train_images": 38013,
+    "validation_images": 8146,
+    "test_images": 8146,
+    "image_size": [
+        224,
+        224
+    ],
+    "batch_size": 32,
+    "seed": 42
+}

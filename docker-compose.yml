@@ -1,0 +1,32 @@
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+
+    container_name: plant-disease-api-container
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
+
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+
+    container_name: plant-disease-streamlit-container
+
+    depends_on:
+      - api
+
+    environment:
+      API_BASE_URL: http://api:8000
+
+    ports:
+      - "8501:8501"
+
+    restart: unless-stopped

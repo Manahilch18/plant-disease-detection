@@ -33,7 +33,7 @@ APP_ICON = "🌿"
 
 API_BASE_URL = os.getenv(
     "API_BASE_URL",
-    "http://localhost:8000",
+    "https://plant-disease-detection-a9062578.fastapicloud.dev"
 ).rstrip("/")
 
 

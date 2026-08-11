@@ -39,3 +39,6 @@ tensorboard
 joblib
 
 requests
+
+fastapi[standard]
+uvicorn

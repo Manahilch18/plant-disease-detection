@@ -109,11 +109,7 @@ User Uploads Leaf Image
 
 | Analyze | Prediction Result | Model Comparison | Prediction History|
 |---|---|---|---|
-| ![Upload screen](<img width="1802" height="505" alt="image" src="https://github.com/user-attachments/assets/b42fd2ba-1d47-4e0a-9e68-6758a867ddef" />
-) | ![Result screen](<img width="1884" height="920" alt="image" src="https://github.com/user-attachments/assets/f80e008a-a1cf-40e6-a4f8-299213d2cdb5" />
-) | ![Comparison screen](<img width="1774" height="908" alt="image" src="https://github.com/user-attachments/assets/c5146e75-babc-4b95-a056-5f02cdb3c2ae" />
-) | ![Prediction History screen](<img width="1872" height="897" alt="image" src="https://github.com/user-attachments/assets/b20738fd-e82c-46a5-80cd-500b7af9ac20" />
-) |
+|(<img width="1802" height="505" alt="image" src="https://github.com/user-attachments/assets/b42fd2ba-1d47-4e0a-9e68-6758a867ddef" />) | (<img width="1884" height="920" alt="image" src="https://github.com/user-attachments/assets/f80e008a-a1cf-40e6-a4f8-299213d2cdb5" />) | (<img width="1774" height="908" alt="image" src="https://github.com/user-attachments/assets/c5146e75-babc-4b95-a056-5f02cdb3c2ae" />) | (<img width="1872" height="897" alt="image" src="https://github.com/user-attachments/assets/b20738fd-e82c-46a5-80cd-500b7af9ac20" />) |
 
 ## 🎯 Problem Statement
 
